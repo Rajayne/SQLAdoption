@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block header %}Available Pets{% endblock %}
+
+{% block content %}
+<ul>
+    {% for pet in pets %}
+    <li>
+        <img src="{{pet.photo_url}}" width="200">
+        {{pet.name}}
+        {% if pet.available == True %}
+            <b>Available</b>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
