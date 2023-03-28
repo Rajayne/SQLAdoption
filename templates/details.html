@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Pet Details{% endblock %}
+
+{% block header %}{{pet.name}} Details{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="columns">
+        <img src="{{pet.photo_url}}" width="500" height="500">
+        <div class="rows">
+            <p>Name: {{pet.name}}</p>
+            <p>Species: {{pet.species}}</p>
+            <p>
+                Age: {% if pet.age %}
+                {{pet.age}}
+                {% endif %}
+            </p>
+            <p>Notes: {{pet.notes}}</p>
+            <p>Available: 
+                {% if pet.available == True %}
+                <b>Yes</b>
+                {% else %}
+                <b>No</b>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+        <a href="/" class="btn btn-danger">Back</a>
+        <a href="/{{pet.id}}/edit" class="btn btn-info">Edit Pet</a>
+</div>
+{% endblock %}

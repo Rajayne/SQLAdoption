@@ -9,7 +9,7 @@
     {% for pet in pets %}
     <li>
         <img src="{{pet.photo_url}}" width="100" height="100">
-        {{pet.name}}
+        <a href="/{{pet.id}}">{{pet.name}}</a>
         {% if pet.available == True %}
             <b>Available</b>
         {% endif %}

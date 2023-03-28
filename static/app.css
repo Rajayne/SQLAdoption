@@ -5,3 +5,15 @@ ul {
 img {
     object-fit: cover;
 }
+
+.container {
+    display: grid;
+}
+
+.columns {
+    display: inline-block;
+}
+
+.rows {
+    display: inline-block;
+}
