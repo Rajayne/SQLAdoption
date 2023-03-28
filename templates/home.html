@@ -2,13 +2,13 @@
 
 {% block title %}Home Page{% endblock %}
 
-{% block header %}Available Pets{% endblock %}
+{% block header %}List of Pets{% endblock %}
 
 {% block content %}
 <ul>
     {% for pet in pets %}
     <li>
-        <img src="{{pet.photo_url}}" width="200">
+        <img src="{{pet.photo_url}}" width="100" height="100">
         {{pet.name}}
         {% if pet.available == True %}
             <b>Available</b>
@@ -16,4 +16,5 @@
     </li>
     {% endfor %}
 </ul>
+<a href="/add" class="btn btn-info">Add Pet</a>
 {% endblock %}
