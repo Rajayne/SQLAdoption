@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import Boolean
 db = SQLAlchemy()
 
 def connect_db(app):
@@ -14,5 +15,4 @@ class Pet(db.Model):
     photo_url = db.Column(db.Text)
     age = db.Column(db.Integer)
     notes = db.Column(db.Text)
-    available = db.Column(db.Boolean,
-                          server_default=True, nullable=False)
+    available = db.Column(db.Boolean, default=True, nullable=False)
