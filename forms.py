@@ -11,3 +11,5 @@ class AddPetForm(FlaskForm):
     age = FloatField("Pet Age", validators=[
         Optional(), NumberRange(min=0, max=30, message="Pet age may range between 0 and 30 years")])
     notes = StringField("Pet Notes")
+    available = SelectField("Available for Adoption?", validators=[Optional()], choices=[('', 'No'), (True, 'Yes')], 
+                            coerce=bool)
