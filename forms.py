@@ -6,7 +6,7 @@ class AddPetForm(FlaskForm):
     name = StringField("Pet Name", validators=[
         InputRequired(message='Pet name cannot be blank.')])
     species = SelectField("Pet Species", choices=[
-        ('cat', 'Cat'), ('dog', 'Dog'), ('rabbit', 'Rabbit'), ('deer', 'Deer')])
+        ('Cat', 'Cat'), ('Dog', 'Dog'), ('Rabbit', 'Rabbit'), ('Deer', 'Deer')])
     photo_url = StringField("Pet Image", validators=[Optional(), URL() ])
     age = FloatField("Pet Age", validators=[
         Optional(), NumberRange(min=0, max=30, message="Pet age may range between 0 and 30 years")])

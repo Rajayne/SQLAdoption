@@ -38,7 +38,25 @@ def add_pet_form():
     else:
         return render_template("add_form.html", form=form)
     
-@app.route("/<int:id>")
+@app.route("/<int:id>", methods=["GET", "POST"])
 def show_pet_details(id):
     pet = Pet.query.get_or_404(id)
-    return render_template('/details.html', pet=pet)
+    form = AddPetForm()
+    return render_template('/details.html', pet=pet, visibility="hidden", form=form)
+
+@app.route("/<int:id>/edit", methods=["GET", "POST"])
+def edit_pet_details(id):
+    pet = Pet.query.get_or_404(id)
+    form = AddPetForm(obj=pet)
+
+    if form.validate_on_submit():
+        pet.name = form.name.data
+        pet.species = form.species.data
+        pet.photo_url = form.photo_url.data
+        pet.age = form.age.data
+        pet.notes = form.notes.data
+
+        db.session.commit()
+        return redirect(f'/{pet.id}')
+    else:
+        return render_template('/details.html', pet=pet, visibility="visible", form=form)

@@ -6,14 +6,26 @@ img {
     object-fit: cover;
 }
 
-.container {
-    display: grid;
+.pet-form {
+    width: 20rem;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
 }
 
-.columns {
-    display: inline-block;
+.pet-details {
+    display: flex;
+    justify-content: center;
 }
 
-.rows {
-    display: inline-block;
+.column {
+    margin: 1rem;
+}
+
+.column .one {
+    float:left;
+}
+
+.column .two {
+    float: right;
 }

@@ -6,16 +6,16 @@
 
 {% block content %}
 <div class="container">
-    <div class="columns">
-        <img src="{{pet.photo_url}}" width="500" height="500">
-        <div class="rows">
+    <div class="pet-details">
+        <div class="column one">
+            <img src="{{pet.photo_url}}" width="400" height="400">
+        </div>
+        <div class="column two">
             <p>Name: {{pet.name}}</p>
             <p>Species: {{pet.species}}</p>
-            <p>
-                Age: {% if pet.age %}
-                {{pet.age}}
+                {% if pet.age %}
+                <p>Age: {{pet.age}}</p>
                 {% endif %}
-            </p>
             <p>Notes: {{pet.notes}}</p>
             <p>Available: 
                 {% if pet.available == True %}
@@ -24,9 +24,30 @@
                 <b>No</b>
                 {% endif %}
             </p>
+            <a href="/" class="btn btn-danger">Back</a>
+            <a href="/{{pet.id}}/edit" class="btn btn-info">Edit Pet</a>
         </div>
     </div>
-        <a href="/" class="btn btn-danger">Back</a>
-        <a href="/{{pet.id}}/edit" class="btn btn-info">Edit Pet</a>
+</div>
+<br>
+<div class="container" style="visibility:{{visibility}}">
+    <form class="pet-form" method="POST">
+        {{ form.hidden_tag() }}
+        {% for field in form
+            if field.widget.input_type != 'hidden' %}
+        <div class="form-group">
+            {{field.label}} 
+            {{field(class_="form-control")}}
+        
+            {% for err in field.errors %}
+            <small class="form-text text-danger">
+                {{err}}
+            </small>
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <a href="/{{pet.id}}" class="btn btn-danger">Cancel</a>
+        <button class="btn btn-success">Submit</button>
+    </form>
 </div>
 {% endblock %}
