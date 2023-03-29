@@ -17,6 +17,7 @@
         {% endif %}
     {% endfor %}
 
+    <h2>Unavailable Pets</h2>
     {% for pet in pets %}
         {% if pet.available == False %}
         <li>

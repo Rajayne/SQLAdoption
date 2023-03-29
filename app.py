@@ -34,6 +34,8 @@ def add_pet_form():
         new_pet = Pet(name=name, species=species, photo_url=photo_url, age=age, notes=notes)
         db.session.add(new_pet)
         db.session.commit()
+
+        flash(f"Created new pet {new_pet.name}!")
         return redirect('/')
     else:
         return render_template("add_form.html", form=form)
@@ -58,6 +60,7 @@ def edit_pet_details(id):
         pet.available = form.available.data
 
         db.session.commit()
-        return redirect('/')
+        flash(f"Edited {pet.name}'s details!")
+        return redirect(f'/{pet.id}')
     else:
         return render_template('/details.html', pet=pet, visibility="visible", form=form)
