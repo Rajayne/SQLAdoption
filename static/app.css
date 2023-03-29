@@ -16,6 +16,12 @@ img {
     font-size: 1.2rem;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 .message-container {
     text-align: center;
 }
@@ -28,6 +34,14 @@ img {
     padding: .8em 10em;
     margin: auto;
     vertical-align: middle;
+}
+
+li {
+    display: inline-block;
+}
+
+li .sidebar {
+    display: grid;
 }
 
 .pet-form {
@@ -53,3 +67,12 @@ img {
 .column .two {
     float: right;
 }
+
+.footer {
+    margin-top: auto;
+    width: 100%;
+    color: black;
+    background: black;
+    height: 2.5rem;
+}
+

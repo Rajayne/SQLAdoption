@@ -10,23 +10,32 @@
     {% for pet in pets %}
         {% if pet.available == True %}
         <li>
-            <img src="{{pet.photo_url}}" width="100" height="100">
-            <a href="/{{pet.id}}">{{pet.name}}</a>
-            <b>Available</b>
+            <div class="sidebar">
+                <img src="{{pet.photo_url}}" width="100" height="100">
+                <a href="/{{pet.id}}">{{pet.name}}</a>
+                <b>is Available</b>
+            </div>
         </li>
         {% endif %}
     {% endfor %}
+    
+    <br><br><br>
 
     <h2>Unavailable Pets</h2>
     {% for pet in pets %}
         {% if pet.available == False %}
         <li>
-            <img src="{{pet.photo_url}}" width="100" height="100">
-            <a href="/{{pet.id}}">{{pet.name}}</a>
-            <b>Unavailable</b>
+            <div class="sidebar">
+                <img src="{{pet.photo_url}}" width="100" height="100">
+                <a href="/{{pet.id}}">{{pet.name}}</a>
+                <b>is Unavailable</b>
+            </div>
         </li>
         {% endif %}
     {% endfor %}
 </ul>
-<a href="/add" class="btn btn-info">Add Pet</a>
+<br><br>
+<div>
+    <a href="/add" class="btn btn-info">Add Pet</a>
+</div>
 {% endblock %}
